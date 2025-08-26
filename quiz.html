@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quiz - Pergunta</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <main class="quiz-container">
+     <h1 id="categoria-titulo"></h1>
+    <div id="contador" style="margin-bottom: 8px; font-size: 1.1rem; color: #083026; font-weight: 500;"></div>
+    <section class="question-area">
+      <h1 class="question" id="pergunta"></h1>
+    </section>
+    <section class="answers-area" id="respostas"></section>
+    <div class="source-area" id="fonte"></div>
+    <button id="next-btn" style="display:none;">Próxima Pergunta</button>
+    <button id="restart-btn" style="margin-top:12px;">Reiniciar Quiz</button>
+  </main>
+  <script src="perguntas.js"></script>
+  <script src="quiz.js"></script>
+</body>
+</html>

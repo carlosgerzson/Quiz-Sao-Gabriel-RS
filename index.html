@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz São Gabriel RS</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .inicio-container {
+      max-width: 450px;
+      margin: 40px auto;
+      padding: 32px 24px;
+      text-align: center;
+    }
+
+    .inicio-container h1 {
+      color: #042021;
+      font-size: 1.7rem;
+      margin-bottom: 18px;
+    }
+
+    .inicio-container p {
+      font-size: 1.12rem;
+      color: #ebf3eb;
+      margin-bottom: 35px;
+      line-height: 1.6;
+    }
+
+    .inicio-container button {
+      background: #e0af0e;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 1.1rem;
+      padding: 12px 32px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .inicio-container button:hover {
+      background: #143e33;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="inicio-container">
+    <h1>Quiz São Gabriel RS</h1>
+    <p>
+      Este quiz explora o livro <strong>História de São Gabriel</strong>, obra do autor <strong>Osorio Santana
+        Figueiredo</strong>, referência para o estudo da nossa cidade.<br>
+      As perguntas valorizam episódios, personagens e curiosidades presentes na obra.<br>
+      O objetivo é promover o <strong>conhecimento</strong> sobre a história, cultura e geografia de São
+      Gabriel, de forma <strong>lúdica</strong> e educativa.<br>
+      Teste seus conhecimentos e aprenda brincando!
+    </p>
+    <button id="comecar-btn">Começar</button>
+  </main>
+  <script>
+    document.getElementById('comecar-btn').onclick = function () {
+      window.location.href = "inicio.html";
+    };
+  </script>
+</body>
+
+</html>

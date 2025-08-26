@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quiz São Gabriel RS</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .categorias-container {
+      max-width: 400px;
+      margin: 40px auto;
+      padding: 32px 24px;
+      text-align: center;
+    }
+    .categorias-container h2 {
+      color: #042021;
+      font-size: 1.6rem;
+      margin-bottom: 20px;
+    }
+    .categorias-container button {
+      background: #e0af0e;
+      color: #fff; 
+      border: none;
+      border-radius: 6px;
+      font-size: 1.1rem;
+      padding: 12px 32px;
+      cursor: pointer;
+      margin-bottom: 18px;
+      transition: background 0.2s;
+      display: block;
+      width: 100%;
+    }
+    .categorias-container button:hover {
+      background: #143e33;
+    }
+  </style>
+</head>
+<body>
+  <main class="categorias-container">
+    <h2>Escolha o modo do Quiz</h2>
+    <button onclick="selecionaCategoria('historia')">Quiz na ordem do livro</button>
+    <button onclick="selecionaCategoria('aleatoria')">Quiz de perguntas aleatórias</button>
+  </main>
+  <script>
+    function selecionaCategoria(categoria) {
+      localStorage.setItem('categoria', categoria);
+      localStorage.removeItem('perguntas_usadas');
+      localStorage.removeItem('score');
+      localStorage.removeItem('perguntas_visualizadas');
+      window.location.href = "quiz.html";
+    }
+  </script>
+</body>
+</html>
