@@ -34,6 +34,11 @@
       background: #143e33;
     }
   </style>
+  <!-- Adição do áudio para som nos botões -->
+  <audio id="tapSound" preload="auto">
+    <source src="tap.mp3" type="audio/mpeg">
+    Seu navegador não suporta o áudio.
+  </audio>
 </head>
 <body>
   <main class="categorias-container">
@@ -43,12 +48,34 @@
     <button onclick="window.location.href='resumo.html'">RESUMO do autor sem Quiz</button>
   </main>
   <script>
+    // Função para tocar som
+    function playTapSound() {
+      const audio = document.getElementById('tapSound');
+      audio.currentTime = 0; // Reinicia o som
+      audio.play().catch(error => {
+        console.log('Som não pode ser reproduzido:', error); // Silencioso para evitar spam
+      });
+    }
+
+    // Adicionar som aos botões ao carregar
+    document.addEventListener('DOMContentLoaded', function() {
+      const buttons = document.querySelectorAll('button');
+      buttons.forEach(button => {
+        button.addEventListener('click', playTapSound);
+        button.addEventListener('touchstart', playTapSound); // Para mobile
+      });
+    });
+
+    // Função selecionaCategoria com som
     function selecionaCategoria(categoria) {
+      playTapSound(); // Toca o som
       localStorage.setItem('categoria', categoria);
       localStorage.removeItem('perguntas_usadas');
       localStorage.removeItem('score');
       localStorage.removeItem('perguntas_visualizadas');
-      window.location.href = "quiz.html";
+      setTimeout(() => {
+        window.location.href = "quiz.html"; // Delay para o som tocar
+      }, 300);
     }
   </script>
 </body>

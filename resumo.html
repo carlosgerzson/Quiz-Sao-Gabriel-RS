@@ -88,6 +88,11 @@
       #restart-btn { max-width: 99vw; font-size: 0.99em; padding: 11px 0; }
     }
   </style>
+  <!-- Adição do áudio para som nos botões -->
+  <audio id="tapSound" preload="auto">
+    <source src="tap.mp3" type="audio/mpeg">
+    Seu navegador não suporta o áudio.
+  </audio>
 </head>
 <body>
   <main class="resumo-container">
@@ -96,7 +101,7 @@
       <img id="carrosselImg" class="carrossel-img" src="resumo/p1.jpg" alt="Resumo página 1" loading="eager"/>
       <button class="arrow-btn right" id="nextBtn"><i class="fas fa-arrow-right"></i></button>
     </div>
-    <button id="restart-btn" onclick="window.location.href='inicio.html'">Reiniciar Quiz</button>
+    <button id="restart-btn">Reiniciar Quiz</button>
   </main>
   <script>
     const totalPaginas = 18;
@@ -104,6 +109,16 @@
     const carrosselImg = document.getElementById('carrosselImg');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
+    const restartBtn = document.getElementById('restart-btn');
+
+    // Função para tocar som
+    function playTapSound() {
+      const audio = document.getElementById('tapSound');
+      audio.currentTime = 0; // Reinicia o som
+      audio.play().catch(error => {
+        console.log('Som não pode ser reproduzido:', error); // Silencioso
+      });
+    }
 
     function atualizaCarrossel() {
       carrosselImg.src = `resumo/p${paginaAtual}.jpg`;
@@ -111,6 +126,15 @@
       prevBtn.disabled = (paginaAtual === 1);
       nextBtn.disabled = (paginaAtual === totalPaginas);
     }
+
+    // Adicionar som aos botões
+    document.addEventListener('DOMContentLoaded', function() {
+      const buttons = document.querySelectorAll('button');
+      buttons.forEach(button => {
+        button.addEventListener('click', playTapSound);
+        button.addEventListener('touchstart', playTapSound); // Para mobile
+      });
+    });
 
     prevBtn.onclick = () => {
       if (paginaAtual > 1) {
@@ -123,6 +147,10 @@
         paginaAtual++;
         atualizaCarrossel();
       }
+    };
+
+    restartBtn.onclick = () => {
+      window.location.href = 'inicio.html';
     };
 
     atualizaCarrossel();

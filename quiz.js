@@ -18,6 +18,14 @@ function removerPagina(texto) {
 }
 
 // Modos disponíveis
+
+// Adiciona som tap.mp3 em todos os botões
+const tapAudio = new Audio('tap.mp3');
+function playTap() {
+  tapAudio.currentTime = 0;
+  tapAudio.play();
+}
+
 const modos = {
   historia: "Quiz na ordem do livro",
   aleatoria: "Quiz de perguntas aleatórias"
@@ -75,6 +83,7 @@ if (!perguntas || perguntas.length === 0) {
       btn.className = 'answer-btn';
       btn.textContent = alternativa;
       btn.onclick = () => {
+        playTap();
         document.querySelectorAll('.answer-btn').forEach(b => b.disabled = true);
         const pagina = extrairPagina(perguntaAtual.correta);
         const respostaCorretaSemPagina = removerPagina(perguntaAtual.correta);
@@ -103,18 +112,24 @@ if (!perguntas || perguntas.length === 0) {
 
     // Botão próxima pergunta
     document.getElementById('next-btn').onclick = () => {
-      perguntasVisualizadas++;
-      localStorage.setItem('perguntas_visualizadas', perguntasVisualizadas);
-      window.location.reload();
+      playTap();
+      setTimeout(() => {
+        perguntasVisualizadas++;
+        localStorage.setItem('perguntas_visualizadas', perguntasVisualizadas);
+        window.location.reload();
+      }, 250);
     };
   }
 }
 
 // Botão reiniciar quiz
 document.getElementById('restart-btn').onclick = () => {
-  localStorage.removeItem('perguntas_usadas');
-  localStorage.removeItem('score');
-  localStorage.removeItem('perguntas_visualizadas');
-  localStorage.removeItem('categoria');
-  window.location.href = 'inicio.html';
+  playTap();
+  setTimeout(() => {
+    localStorage.removeItem('perguntas_usadas');
+    localStorage.removeItem('score');
+    localStorage.removeItem('perguntas_visualizadas');
+    localStorage.removeItem('categoria');
+    window.location.href = 'inicio.html';
+  }, 250);
 };
