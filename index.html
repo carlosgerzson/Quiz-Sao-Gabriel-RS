@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="style.css" />
   <!-- Font Awesome para ícone de áudio -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <!-- Font Awesome para ícone de áudio -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
     .inicio-container {
       max-width: 450px;
@@ -35,88 +37,42 @@
       border-radius: 6px;
       font-size: 1.1rem;
       padding: 12px 32px;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-
-    .inicio-container button:hover {
-      background: #143e33;
-    }
-  </style>
-  <!-- Adição do áudio para som nos botões -->
-  <audio id="tapSound" preload="auto">
-    <source src="tap.mp3" type="audio/mpeg">
-    Seu navegador não suporta o áudio.
-  </audio>
-
-  <style>
-    .audio-toggle-container {
-      position: absolute;
-      top: 18px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      z-index: 10;
-      background: rgba(255,255,255,0.85);
-      padding: 6px 16px;
-      border-radius: 18px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-      font-size: 1.08rem;
-    }
-    .audio-toggle-btn {
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-size: 1.5rem;
-      color: #e0af0e;
-      transition: color 0.2s;
-    }
-    .audio-toggle-btn.active {
-      color: #143e33;
-    }
-  </style>
-</head>
-
-<body>
-  <div class="audio-toggle-container">
-    <button id="audio-toggle" class="audio-toggle-btn" title="Ativar/Desativar som">
-      <i id="audio-icon" class="fa-solid fa-volume-xmark"></i>
-    </button>
-    <span>som opcional</span>
-  </div>
-  <main class="inicio-container">
-    <h1>Quiz São Gabriel RS</h1>
-    <p>
-      Este quiz explora o livro <strong>História de São Gabriel</strong>, obra do autor <strong>Osorio Santana
-        Figueiredo</strong>, referência para o estudo da nossa cidade.<br>
-      As perguntas valorizam episódios, personagens e curiosidades presentes na obra.<br>
-      O objetivo é promover o <strong>conhecimento</strong> sobre a história, cultura e geografia de São
-      Gabriel, de forma <strong>lúdica</strong> e educativa.<br>
-      Teste seus conhecimentos e aprenda brincando!
-    </p>
-    <button id="comecar-btn">Começar</button>
-  </main>
-  <script>
-    // Controle de áudio
-    let audioEnabled = false;
-    const audioToggleBtn = document.getElementById('audio-toggle');
-    const audioIcon = document.getElementById('audio-icon');
-
-    audioToggleBtn.onclick = function() {
-      audioEnabled = !audioEnabled;
-      if (audioEnabled) {
-        audioIcon.classList.remove('fa-volume-xmark');
-        audioIcon.classList.add('fa-volume-high');
-        audioToggleBtn.classList.add('active');
-      } else {
-        audioIcon.classList.remove('fa-volume-high');
-        audioIcon.classList.add('fa-volume-xmark');
-        audioToggleBtn.classList.remove('active');
-      }
-    };
-
+          cursor: pointer;
+          transition: background 0.2s;
+        }
+    
+        .inicio-container button:hover {
+          background: #143e33;
+        }
+      </style>
+      <style>
+        .audio-toggle-container {
+          position: absolute;
+          top: 18px;
+          left: 50%;
+          transform: translateX(-50%);
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          z-index: 10;
+          background: rgba(255,255,255,0.85);
+          padding: 6px 16px;
+          border-radius: 18px;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+          font-size: 1.08rem;
+        }
+        .audio-toggle-btn {
+          background: none;
+          border: none;
+          cursor: pointer;
+          font-size: 1.5rem;
+          color: #e0af0e;
+          transition: color 0.2s;
+        }
+        .audio-toggle-btn.active {
+          color: #143e33;
+        }
+      </style>
     // Função para tocar som
     function playTapSound() {
       if (!audioEnabled) return;
