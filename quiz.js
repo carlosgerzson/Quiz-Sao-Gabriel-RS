@@ -50,7 +50,11 @@ if (!perguntas || perguntas.length === 0) {
   document.getElementById('restart-btn').style.display = "";
 } else {
   // Embaralha para modo aleatório
-  if (categoria === "aleatoria") perguntas = embaralhar(perguntas);
+  if (categoria === "aleatoria") {
+    // Filtra perguntas já usadas antes de embaralhar
+    perguntas = perguntas.filter(p => !perguntasUsadas.includes(p.pergunta));
+    perguntas = embaralhar(perguntas);
+  }
 
   // Verifica se acabou as perguntas
   if (perguntasVisualizadas >= perguntas.length) {
